@@ -18,12 +18,12 @@ train_data = torchvision.datasets.MNIST(
     root='./mnist/',
     train=True,
     transform=torchvision.transforms.ToTensor(),                                                 
-    download=False,
+    download=True,
 )
 train_loader = Data.DataLoader(dataset=train_data, batch_size=BATCH_SIZE, shuffle=True)
 
 
-test_data = torchvision.datasets.MNIST(root='./mnist/', train=False)
+test_data = torchvision.datasets.MNIST(root='./mnist/', train=False,download=True,)
 
 test_x = Variable(torch.unsqueeze(test_data.test_data, dim=1), volatile=True).type(torch.FloatTensor)[:2000]/255.   
 test_y = test_data.test_labels[:2000]
